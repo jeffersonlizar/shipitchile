@@ -3,13 +3,14 @@ import json
 import requests
 
 from .exceptions import EndpointNotFoundException, AttributeNotValidException, ConnectException, EmailNotFoundException, \
-    NumberNotValidException, TokenNotFoundException
+    NumberNotValidException, TokenNotFoundException, BadRequestException, UserNotAuthException
 
 
 class Shipit:
     ENV_DEVELOPMENT = 'development'
     ENV_PRODUCTION = 'production'
     METHOD_POST = 'post'
+    METHOD_GET = 'get'
     METHOD_PUT = 'put'
     base_api = 'http://api.shipit.cl/v/'
 
@@ -26,32 +27,38 @@ class Shipit:
         self.environment = environment
 
     def regions(self):
-        headers = {'Content-Type': 'application/json',
-                   'X-Shipit-Email': self.email,
-                   'X-Shipit-Access-Token': self.token,
-                   'Accept': self.token,
-                   }
-        api_url = '{0}communeas'.format(self.base_api)
+        regions = self.request(self.METHOD_GET, 'communes')
+        return regions
 
-        response = requests.get(api_url, headers=headers)
-        if response.status_code == 404:
-            raise EndpointNotFoundException('test')
+    def regions(self):
+        regions = self.request(self.METHOD_GET, 'communes')
+        return regions
 
-        return json.loads(response.content.decode('utf-8'))
-
-    def request(self, method, endpoint):
+    def request(self, method, endpoint, data=None):
         if not self.token:
             raise TokenNotFoundException
         if not self.email:
             raise EmailNotFoundException
         endpoint = '{0}{1}'.format(self.base_api, endpoint)
-        data ={
-
-        }
-        headers = {'Content-Type': 'application/json',
-                   'X-Shipit-Email': self.email,
-                   'X-Shipit-Access-Token': self.token,
-                   'Accept': 'application/vnd.shipit.v2',
-                   }
-        if method in [self.METHOD_POST, self.METHOD_PUT]:
-            environment = self.ENV_PRODUCTION
+        try:
+            headers = {'Content-Type': 'application/json',
+                       'X-Shipit-Email': self.email,
+                       'X-Shipit-Access-Token': self.token,
+                       'Accept': 'application/vnd.shipit.v2',
+                       }
+            if method == self.METHOD_GET:
+                res = requests.get(endpoint, headers=headers)
+            elif method == self.METHOD_POST:
+                res = requests.post(endpoint, data=data, headers=headers)
+            else:
+                res = requests.put(endpoint, data=data, headers=headers)
+            if res.status_code == 400:
+                raise BadRequestException()
+            if res.status_code == 404:
+                raise EndpointNotFoundException(endpoint)
+            if res.status_code == 403:
+                raise UserNotAuthException(self.email)
+            response = json.loads(res.content.decode('utf-8'))
+        except Exception:
+            raise ConnectException(endpoint)
+        return response

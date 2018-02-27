@@ -9,6 +9,27 @@ class EndpointNotFoundException(Exception):
         return 'Endpoint not found {0}'.format(self.endpoint)
 
 
+class UserNotAuthException(Exception):
+    """Raise for my specific kind of exception"""
+
+    def __init__(self, user):
+        self.user = user
+        super(UserNotAuthException, self).__init__()
+
+    def __str__(self):
+        return 'User not authenticated {0}'.format(self.user)
+
+
+class BadRequestException(Exception):
+    """Raise for my specific kind of exception"""
+
+    def __init__(self):
+        super(BadRequestException, self).__init__()
+
+    def __str__(self):
+        return 'Bad Request'
+
+
 class AttributeNotValidException(Exception):
     """Raise for my specific kind of exception"""
 
