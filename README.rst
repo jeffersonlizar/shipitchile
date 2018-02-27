@@ -1,9 +1,11 @@
-# Shipit
+Shipit
+########################################
 
 Library that allows integration with the ShipIt API (https://developers.shipit.cl/docs) for
 Send dispatch requests, check your statements and other actions.
 
-## Access Credentials
+Access Credentials
+=============
 
 To use the ShipIt API you must have an account and access the "API" menu to
 Copy your email and access token.
@@ -11,42 +13,45 @@ Copy your email and access token.
 https://clientes.shipit.cl/settings/api
 
 
-## Use
+Use
+=============
 
 
-```python
+.. code-block:: python
 
-shipit = new Shipit('EMAIL', 'TOKEN', 'development')
-// o
-shipit = new Shipit()
-shipit.email('EMAIL')
-shipit.token('TOKEN')
-shipit.environment(Shipit.ENV_PRODUCTION)
+    shipit = new Shipit('EMAIL', 'TOKEN', 'development')
+    // o
+    shipit = new Shipit()
+    shipit.email('EMAIL')
+    shipit.token('TOKEN')
+    shipit.environment(Shipit.ENV_PRODUCTION)
 
-print(Shipit.communes())
-```
+    print(Shipit.communes())
 
+Available Actions
+=============
 
-## Available Actions
-
-### Obtain the Regions and Communes
+Obtain the Regions and Communes
+-----
 
 You can list the regions and communes that ShipIt has registered to synchronize
 your system
 
-```python
-shipit.regions()
-shipit.communes()
-```
-#### Example
+.. code-block:: python
+    shipit.regions()
+    shipit.communes()
 
-```python
-regions = $shipit.regions()
-print($regions[0]['name'])
-// "Arica y Parinacota"
-```
+Example
+-----
 
-### Get a Quote
+.. code-block:: python
+    regions = $shipit.regions()
+    print($regions[0]['name'])
+    // "Arica y Parinacota"
+
+
+Get a Quote
+-----
 
 You can send the information of your office and get a quote with the options
 of cariers available ShipIt.
@@ -56,11 +61,13 @@ of cariers available ShipIt.
 
 Do not hesitate to send me your feedbacks or pull-request to improve this library.
 
-## Thanks
+Thanks
+=============
 
-Thanks to kattatzu for create the original version https://github.com/kattatzu/ShipIt
+Thanks to kattatzu for create the initial version for php https://github.com/kattatzu/ShipIt
 
-## Licencia
+Licencia
+=============
 
 MIT License
 
