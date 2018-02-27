@@ -1,13 +1,13 @@
 Shipit
 ########################################
 
-Library that allows integration with the ShipIt API (https://developers.shipit.cl/docs) for
+Library that allows integration with the Shipit API (https://developers.shipit.cl/docs) for
 Send dispatch requests, check your statements and other actions.
 
 Access Credentials
 =============
 
-To use the ShipIt API you must have an account and access the "API" menu to
+To use the Shipit API you must have an account and access the "API" menu to
 Copy your email and access token.
 
 https://clientes.shipit.cl/settings/api
@@ -34,7 +34,7 @@ Available Actions
 Obtain the Regions and Communes
 -----
 
-You can list the regions and communes that ShipIt has registered to synchronize
+You can list the regions and communes that Shipit has registered to synchronize
 your system
 
 .. code-block:: python
@@ -56,9 +56,9 @@ Get a Quote
 -----
 
 You can send the information of your office and get a quote with the options
-of cariers available ShipIt.
+of cariers available Shipit.
 
-
+---- Under Construction ----
 
 
 Do not hesitate to send me your feedbacks or pull-request to improve this library.
