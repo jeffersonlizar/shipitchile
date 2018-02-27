@@ -47,8 +47,8 @@ Example
 
 .. code-block:: python
 
-    regions = $shipit.regions()
-    print($regions[0]['name'])
+    regions = shipit.regions()
+    print(regions[0]['name'])
     // "Arica y Parinacota"
 
 
