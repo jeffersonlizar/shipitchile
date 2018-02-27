@@ -1,4 +1,4 @@
-# ShipIt
+#ShipIt
 =======================
 Library that allows integration with the ShipIt API.
 
