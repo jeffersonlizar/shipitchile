@@ -38,6 +38,7 @@ You can list the regions and communes that ShipIt has registered to synchronize
 your system
 
 .. code-block:: python
+
     shipit.regions()
     shipit.communes()
 
@@ -45,6 +46,7 @@ Example
 -----
 
 .. code-block:: python
+
     regions = $shipit.regions()
     print($regions[0]['name'])
     // "Arica y Parinacota"
