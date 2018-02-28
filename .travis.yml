@@ -14,9 +14,8 @@ matrix:
     - python: 3.6
       env: TOXENV=py36
 
-install: 
-  - pip install tox
-  - pip install -e .
+install: pip install tox
+
 script: tox
 
 notifications:

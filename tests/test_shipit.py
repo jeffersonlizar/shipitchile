@@ -1,6 +1,9 @@
 import unittest
-from shipit.shipit import Shipit
-from ..shipit import shipit
+# from shipit.shipit import Shipit
+import sys
+
+sys.path.append("..")
+from ..shipit.shipit import Shipit
 
 
 class TestShipitMethods(unittest.TestCase):
