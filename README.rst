@@ -116,6 +116,31 @@ You can get the most convenient quote in both response time (SLA) and price.
     item = shipit.best_quotation(data)
     print(item['shipment']['total'])
 
+Send a Shipping request
+-----
+To send a shipping request you must create an ** ShippingRequest ** instance to be sent to the ** request_shipping ** method:
+.. code-block:: python
+
+    data = ShippingRequest({
+        "reference": "S000001",
+        "full_name": "Jefferson Lizarzabal",
+        "email": "cliente@gmail.com",
+        "items_count": 1,
+        "cellphone": "912341234",
+        "is_payable": False,
+        "packing": ShippingRequest.PACKING_NONE,
+        "shipping_type": ShippingRequest.DELIVERY_NORMAL,
+        "destiny": ShippingRequest.DESTINATION_HOME,
+        "courier_for_client": ShippingRequest.COURIER_CHILEXPRESS,
+        "approx_size": ShippingRequest.SIZE_SMALL,
+        "address_commune_id": 317,
+        "address_street": "San Carlos",
+        "address_number": 123,
+        "address_complement": None
+    })
+    shipping = shipit.request_shipping(data)
+    print(shipping['id'])
+
 ---- Under Construction ----
 
 
