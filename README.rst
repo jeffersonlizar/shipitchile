@@ -58,6 +58,64 @@ Get a Quote
 You can send the information of your office and get a quote with the options
 of cariers available Shipit.
 
+For this it is necessary that you create an instance ** QuotationRequest ** to be sent to the method ** quotation **.
+
+Example
+-----
+
+.. code-block:: python
+
+    data = QuotationRequest({
+        "length": 1,
+        "width": 1,
+        "height": 1,
+        "weight": 1,
+        "destiny": "Domicilio",
+        "is_payable": "false",
+        "commune_id": 295
+    })
+    items = shipit.quotation(data)
+    for item in items['shipments']:
+        print(item['courier'])
+
+Get the Most Economic Quote
+-----
+
+You can send the information of your office and get the cheapest quote.
+
+.. code-block:: python
+
+    data = QuotationRequest({
+        "length": 1,
+        "width": 1,
+        "height": 1,
+        "weight": 1,
+        "destiny": "Domicilio",
+        "is_payable": "false",
+        "commune_id": 295
+    })
+    item = shipit.economic_quotation(data)
+    print(item['shipment']['total'])
+
+Get the Most Convenient Quote
+-----
+
+You can get the most convenient quote in both response time (SLA) and price.
+
+.. code-block:: python
+
+    data = QuotationRequest({
+        "length": 1,
+        "width": 1,
+        "height": 1,
+        "weight": 1,
+        "destiny": "Domicilio",
+        "is_payable": "false",
+        "commune_id": 295
+    })
+    item = shipit.best_quotation(data)
+    print(item['shipment']['total'])
+
 ---- Under Construction ----
 
 
@@ -66,9 +124,9 @@ Do not hesitate to send me your feedbacks or pull-request to improve this librar
 Thanks
 =============
 
-Thanks to kattatzu for create the initial version for php https://github.com/kattatzu/ShipIt
+Thanks to kattatzu for create the original version for php https://github.com/kattatzu/ShipIt
 
-Licencia
+Licence
 =============
 
 MIT License

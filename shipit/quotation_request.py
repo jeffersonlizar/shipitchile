@@ -1,7 +1,7 @@
 from .exceptions import AttributeNotValidException
 
 
-class QuotationItem:
+class QuotationRequest:
     valid_properties = [
         'length',
         'width',
@@ -12,16 +12,8 @@ class QuotationItem:
         'is_payable',
         'commune_id',
     ]
-    data = {
-        "length": "",
-        "width": "",
-        "height": "",
-        "weight": "",
-        "destiny": "",
-        "courrier_for_client": "",
-        "is_payable": "",
-        "commune_id": "",
-    }
+
+    data = {}
 
     def __init__(self, data):
         for key in data:

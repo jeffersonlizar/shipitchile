@@ -4,7 +4,6 @@ import requests
 
 from .exceptions import EndpointNotFoundException, AttributeNotValidException, ConnectException, EmailNotFoundException, \
     NumberNotValidException, TokenNotFoundException, BadRequestException, UserNotAuthException
-from .quotation_request import QuotationItem
 
 
 class Shipit:
@@ -20,16 +19,16 @@ class Shipit:
 
     environment = ENV_PRODUCTION
 
-    SMALL = 29
-    MEDIUM = 49
-    LARGE = 60
-    LARGER = 999999
+    SIZE_SMALL = 29
+    SIZE_MEDIUM = 49
+    SIZE_LARGE = 60
+    SIZE_XLARGE = 999999
 
     PACKAGE_SIZES = (
-        (SMALL, 'Pequeño (10x10x10cm)'),
-        (MEDIUM, 'Mediano (30x30x30cm)'),
-        (LARGE, 'Grande (50x50x50cm)'),
-        (LARGER, 'Muy Grande (>60x60x60cm)'),
+        (SIZE_SMALL, 'Pequeño (10x10x10cm)'),
+        (SIZE_MEDIUM, 'Mediano (30x30x30cm)'),
+        (SIZE_LARGE, 'Grande (50x50x50cm)'),
+        (SIZE_XLARGE, 'Muy Grande (>60x60x60cm)'),
     )
 
     PROVIDERS_TRAKING_URL = {
@@ -60,24 +59,21 @@ class Shipit:
     def quotation(self, request):
         """ Return list of quotations
         """
-        item = QuotationItem(request)
-        quote = item.to_shipit_format()
+        quote = request.to_shipit_format()
         response = self.request(self.METHOD_POST, 'shippings/prices', quote)
         return response
 
     def best_quotation(self, request):
         """ Return quotation fastest and cheapest
         """
-        item = QuotationItem(request)
-        quote = item.to_shipit_format()
+        quote = request.to_shipit_format()
         response = self.request(self.METHOD_POST, 'shippings/price', quote)
         return response
 
     def economic_quotation(self, request):
         """ Return quotation cheapest
         """
-        item = QuotationItem(request)
-        quote = item.to_shipit_format()
+        quote = request.to_shipit_format()
         response = self.request(self.METHOD_POST, 'shippings/price', quote)
         return response
 
