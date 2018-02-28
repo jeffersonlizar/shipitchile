@@ -118,7 +118,9 @@ You can get the most convenient quote in both response time (SLA) and price.
 
 Send a Shipping request
 -----
+
 To send a shipping request you must create an ** ShippingRequest ** instance to be sent to the ** request_shipping ** method:
+
 .. code-block:: python
 
     data = ShippingRequest({
@@ -141,6 +143,63 @@ To send a shipping request you must create an ** ShippingRequest ** instance to 
     shipping = shipit.request_shipping(data)
     print(shipping['id'])
 
+Send a Shipping request for multiple items
+-----
+
+To send a shipping request you must create an ** ShippingRequest ** instance to be sent to the ** request_shipping ** method:
+
+.. code-block:: python
+
+    shippings = []
+    shipping_1 = ShippingRequest({
+        "reference": "S000001",
+        "full_name": "Jefferson Lizarzabal",
+        "email": "cliente@gmail.com",
+        "items_count": 1,
+        "cellphone": "912341234",
+        "is_payable": False,
+        "packing": ShippingRequest.PACKING_NONE,
+        "shipping_type": ShippingRequest.DELIVERY_NORMAL,
+        "destiny": ShippingRequest.DESTINATION_HOME,
+        "courier_for_client": ShippingRequest.COURIER_CHILEXPRESS,
+        "approx_size": ShippingRequest.SIZE_SMALL,
+        "address_commune_id": 317,
+        "address_street": "San Carlos",
+        "address_number": 123,
+        "address_complement": None
+    })
+    shippings.append(shipping_1)
+    shipping_2 = ShippingRequest({
+        "reference": "S000002",
+        "full_name": "Jefferson Lizarzabal",
+        "email": "cliente@gmail.com",
+        "items_count": 1,
+        "cellphone": "912341234",
+        "is_payable": False,
+        "packing": ShippingRequest.PACKING_NONE,
+        "shipping_type": ShippingRequest.DELIVERY_NORMAL,
+        "destiny": ShippingRequest.DESTINATION_HOME,
+        "courier_for_client": ShippingRequest.COURIER_CHILEXPRESS,
+        "approx_size": ShippingRequest.SIZE_SMALL,
+        "address_commune_id": 317,
+        "address_street": "San Carlos",
+        "address_number": 123,
+        "address_complement": None
+    })
+    shippings.append(shipping_2)
+    shipping = shipit.request_massive_shipping(data)
+    print(shipping['id'])
+
+
+
+Approximate shipping size
+-----
+
+You can get the approximate size in the Shipit format of a package.
+
+.. code-block:: python
+    size = Shipit.package_size(width = 14, height = 23, length = 45)
+
 ---- Under Construction ----
 
 
@@ -149,7 +208,7 @@ Do not hesitate to send me your feedbacks or pull-request to improve this librar
 Thanks
 =============
 
-Thanks to kattatzu for create the original version for php https://github.com/kattatzu/ShipIt
+Thanks to kattatzu for create the original version for PHP https://github.com/kattatzu/ShipIt
 
 Licence
 =============

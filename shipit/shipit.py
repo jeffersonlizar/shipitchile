@@ -92,8 +92,25 @@ class Shipit:
         ----------
         request : ShippingRequest
         """
-        quote = request.to_shipit_format(self.environment)
-        response = self.request(self.METHOD_POST, 'packages', quote)
+        shipping = request.to_shipit_format(self.environment)
+        data = {
+            "package": shipping
+        }
+        response = self.request(self.METHOD_POST, 'packages', data)
+        return response
+
+    def request_massive_shipping(self, items):
+        """ Return shipping request for multiple items
+        Parameters
+        ----------
+        items : array ShippingRequest
+        """
+        data = {
+            "package": []
+        }
+        for item in items:
+            data["package"].append(item.to_shipit_format(self.environment))
+        response = self.request(self.METHOD_POST, 'packages/mass_create', data)
         return response
 
     def request(self, method, endpoint, data=None):

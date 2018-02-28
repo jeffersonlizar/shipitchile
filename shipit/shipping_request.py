@@ -44,27 +44,26 @@ class ShippingRequest:
         'address_complement'
     ]
 
-    data = {
-        "reference": None,
-        "full_name": None,
-        "email": None,
-        "items_co": None,
-        "cellphone": None,
-        "is_payable'": None,
-        "packing": None,
-        "shipping_type": None,
-        "destiny": "Domicilio",
-        "courier_for_client": None,
-        "approx_size": None,
-        "address_commune_id": None,
-        "address_street": None,
-        "address_number": None,
-        "address_complement": None,
-        "address_coords_latitude": None,
-        "address_coords_longitude": None,
-    }
-
     def __init__(self, data):
+        self.data = {
+            "reference": None,
+            "full_name": None,
+            "email": None,
+            "items_count": None,
+            "cellphone": None,
+            "is_payable'": None,
+            "packing": None,
+            "shipping_type": None,
+            "destiny": "Domicilio",
+            "courier_for_client": None,
+            "approx_size": None,
+            "address_commune_id": None,
+            "address_street": None,
+            "address_number": None,
+            "address_complement": None,
+            "address_coords_latitude": None,
+            "address_coords_longitude": None,
+        }
         for key in data:
             if key not in self.valid_properties:
                 raise AttributeNotValidException(key)
@@ -92,7 +91,4 @@ class ShippingRequest:
         del self.data['address_coords_latitude']
         del self.data['address_coords_longitude']
 
-        package = {
-            "package": self.data
-        }
-        return package
+        return self.data

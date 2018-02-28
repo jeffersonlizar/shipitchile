@@ -13,18 +13,17 @@ class QuotationRequest:
         'commune_id',
     ]
 
-    data = {
-        "commune_id": None,
-        "courrier_for_client": None,
-        "destiny": "Domicilio",
-        "height": 0,
-        # 'is_payable' = > false,
-        "length": 0,
-        "weight": 0,
-        "width": 0
-    }
-
     def __init__(self, data):
+        self.data = {
+            "commune_id": None,
+            "courrier_for_client": None,
+            "destiny": "Domicilio",
+            "height": 0,
+            # 'is_payable' = > false,
+            "length": 0,
+            "weight": 0,
+            "width": 0
+        }
         for key in data:
             if key not in self.valid_properties:
                 raise AttributeNotValidException(key)
