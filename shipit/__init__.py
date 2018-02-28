@@ -1,4 +1,4 @@
-from __future__ import absolute_import, unicode_literals
+# from __future__ import absolute_import, unicode_literals
 
 from .shipit import Shipit
 
@@ -6,6 +6,6 @@ from .shipit import Shipit
 #     """Entry point for the application script"""
 #     print("Call your main application code here")
 
-__all__ = [
-    'Shipit'
-]
+# __all__ = [
+#     'Shipit'
+# ]
