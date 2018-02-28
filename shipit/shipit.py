@@ -1,9 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 import json
 import requests
+import datetime
 
 from .exceptions import EndpointNotFoundException, AttributeNotValidException, ConnectException, EmailNotFoundException, \
-    NumberNotValidException, TokenNotFoundException, BadRequestException, UserNotAuthException
+    NumberNotValidException, TokenNotFoundException, BadRequestException, UserNotAuthException, DateFormatException
 
 
 class Shipit:
@@ -113,19 +114,42 @@ class Shipit:
         response = self.request(self.METHOD_POST, 'packages/mass_create', data)
         return response
 
-    # def all_shippings(self, date):
-    #     """ Return history shippings for date
-    #     Parameters
-    #     ----------
-    #     items : array ShippingRequest
-    #     """
-    #     data = {
-    #         "packages": []
-    #     }
-    #     for item in items:
-    #         data['packages'].append(item.to_shipit_format(self.environment))
-    #     response = self.request(self.METHOD_POST, 'packages/mass_create', data)
-    #     return response
+    def all_shipping(self, date=None):
+        """ Return history shipping for date
+        Parameters
+        ----------
+        date : date
+        """
+        if not date:
+            date = datetime.date.today()
+        if not type(date).__name__ == 'date':
+            raise DateFormatException(date)
+        params = [
+            'year={0}'.format(date.year),
+            'month={0}'.format(date.month),
+            'day={0}'.format(date.day),
+        ]
+        params_str = "&".join(str(x) for x in params)
+        response = self.request(self.METHOD_GET, 'packages?' + params_str)
+        return response
+
+    def shipping(self, id=None):
+        """ Return shipping detail
+        Parameters
+        ----------
+        id : int
+        """
+        if not Shipit.is_int(id):
+            raise NumberNotValidException(id)
+        response = self.request(self.METHOD_GET, 'packages/' + str(id))
+        return response
+
+    @staticmethod
+    def tracking_url(provider, tracking_number):
+        if provider not in Shipit.PROVIDERS_TRAKING_URL:
+            return None
+        url = Shipit.PROVIDERS_TRAKING_URL[provider]
+        return url.replace(':number', str(tracking_number))
 
     def request(self, method, endpoint, data=None):
         """ Returns the response of an endpoint
@@ -165,7 +189,7 @@ class Shipit:
         return response
 
     @staticmethod
-    def is_number(n):
+    def is_float(n):
         try:
             float(n)  # Type-casting the string to `float`.
             # If string is not a valid `float`,
@@ -175,9 +199,19 @@ class Shipit:
         return True
 
     @staticmethod
+    def is_int(n):
+        try:
+            int(n)  # Type-casting the string to `float`.
+            # If string is not a valid `float`,
+            # it'll raise `ValueError` exception
+        except ValueError:
+            return False
+        return True
+
+    @staticmethod
     def package_size(width, height, length):
-        if not Shipit.is_number(width) or not Shipit.is_number(height) or not Shipit.is_number(length):
-            return None
+        if not Shipit.is_float(width) or not Shipit.is_float(height) or not Shipit.is_float(length):
+            raise NumberNotValidException()
         package_size = 0
         package_size = height if package_size < height else package_size
         package_size = width if package_size < width else package_size

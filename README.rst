@@ -189,7 +189,42 @@ To send a shipping request you must create an ** ShippingRequest ** instance to 
     shipping_list.append(shipping_2)
     shipping = shipit.request_massive_shipping(shipping_list)
 
+Show shipping detail
+-----
 
+You can consult the data of a historical shipping by sending the id delivered by Shipit
+using the ** shipping ** method:
+
+.. code-block:: python
+
+    shipping = shipit.shipping(280584)
+    print(shipping['id'])
+    print(shipping['reference])
+
+Show shipping requests history
+-----
+
+You can check the history of shipping made per day using the ** all_shipping ** method:
+By default it will be the current date
+
+.. code-block:: python
+
+    date = datetime.date(2018, 1, 26)
+    shipping = shipit.all_shipping(date)
+    for shipping_data in shipping:
+        print(shipping_data['id'])
+
+
+Utilities
+=============
+
+Obtain tracking URL
+-----
+
+You can generate the tracking url easily:
+
+.. code-block:: python
+    test = Shipit.tracking_url('chilexpress', 99680722912)
 
 Approximate shipping size
 -----
