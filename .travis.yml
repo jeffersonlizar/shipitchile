@@ -16,7 +16,7 @@ matrix:
 
 install:
   pip install tox
-  pip install pipenv
+  pip install vine==1.1.4
 
 script: tox
 
