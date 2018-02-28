@@ -17,6 +17,7 @@ matrix:
 install:
   - pip install tox
   - pip install requests
+  - pip install pytest
 
 script: tox
 
