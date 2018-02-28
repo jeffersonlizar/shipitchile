@@ -20,6 +20,24 @@ class Shipit:
 
     environment = ENV_PRODUCTION
 
+    SMALL = 29
+    MEDIUM = 49
+    LARGE = 60
+    LARGER = 999999
+
+    PACKAGE_SIZES = (
+        (SMALL, 'Pequeño (10x10x10cm)'),
+        (MEDIUM, 'Mediano (30x30x30cm)'),
+        (LARGE, 'Grande (50x50x50cm)'),
+        (LARGER, 'Muy Grande (>60x60x60cm)'),
+    )
+
+    PROVIDERS_TRAKING_URL = {
+        'chilexpress': 'http://chilexpress.cl/Views/ChilexpressCL/Resultado-busqueda.aspx?DATA=:number',
+        'starken': 'http://www.starken.cl/seguimiento?codigo=:number',
+        'correoschile': 'http://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio=:number'
+    }
+
     def __init__(self, email, token, environment=ENV_PRODUCTION):
         self.email = email
         self.token = token
@@ -99,3 +117,27 @@ class Shipit:
             raise EndpointNotFoundException(endpoint)
         response = json.loads(res.content.decode('utf-8'))
         return response
+
+    @staticmethod
+    def is_number(n):
+        try:
+            float(n)  # Type-casting the string to `float`.
+            # If string is not a valid `float`,
+            # it'll raise `ValueError` exception
+        except ValueError:
+            return False
+        return True
+
+    @staticmethod
+    def package_size(width, height, length):
+        if not Shipit.is_number(width) or not Shipit.is_number(height) or not Shipit.is_number(length):
+            return None
+        package_size = 0
+        package_size = height if package_size < height else package_size
+        package_size = width if package_size < width else package_size
+        package_size = length if package_size < length else package_size
+        test = Shipit.PACKAGE_SIZES
+        for package_type in Shipit.PACKAGE_SIZES:
+            if package_size < package_type[0]:
+                return package_type[1]
+        return None

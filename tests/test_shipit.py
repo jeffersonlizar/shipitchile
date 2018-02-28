@@ -13,7 +13,7 @@ class TestShipitMethods(unittest.TestCase):
         cls.shipit = Shipit('jlizarzabal@firesoft.com.ve', 'miRxLALSLWWv9fUC7KyW')
 
     def test_not_email_not_token(self):
-        shipit = Shipit('asdf', 'asdf')
+        shipit = Shipit('email', 'token')
         shipit.email = None
         shipit.token = None
         regions = self.shipit.regions()
