@@ -1,16 +1,17 @@
 import unittest
+from shipit.shipit import Shipit
 from ..shipit import shipit
 
 
 class TestShipitMethods(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.shipit = shipit.Shipit('jlizarzabal@firesoft.com.ve', 'miRxLALSLWWv9fUC7KyW')
+        cls.shipit = Shipit('jlizarzabal@firesoft.com.ve', 'miRxLALSLWWv9fUC7KyW')
 
     def test_not_email_not_token(self):
-        ship = shipit.Shipit('asdf', 'asdf')
-        ship.email = None
-        ship.token = None
+        shipit = Shipit('asdf', 'asdf')
+        shipit.email = None
+        shipit.token = None
         regions = self.shipit.regions()
         self.assertIsNotNone(regions)
         self.assertNotIn('error', regions)
