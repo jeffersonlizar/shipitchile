@@ -15,14 +15,14 @@ class QuotationRequest:
 
     def __init__(self, data):
         self.data = {
-            "commune_id": None,
-            "courrier_for_client": None,
-            "destiny": "Domicilio",
-            "height": 0,
-            # 'is_payable' = > false,
-            "length": 0,
-            "weight": 0,
-            "width": 0
+            'commune_id': None,
+            'courrier_for_client': None,
+            'destiny': "Domicilio",
+            'height': 0,
+            # "is_payable": False,
+            'length': 0,
+            'weight': 0,
+            'width': 0
         }
         for key in data:
             if key not in self.valid_properties:
@@ -31,10 +31,10 @@ class QuotationRequest:
 
     def to_shipit_format(self):
         self.data['address_attributes'] = {
-            "commune_id": self.data['commune_id']
+            'commune_id': self.data['commune_id']
         }
         del self.data['commune_id']
         package = {
-            "package": self.data
+            'package': self.data
         }
         return package

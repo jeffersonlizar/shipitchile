@@ -94,7 +94,7 @@ class Shipit:
         """
         shipping = request.to_shipit_format(self.environment)
         data = {
-            "package": shipping
+            'package': shipping
         }
         response = self.request(self.METHOD_POST, 'packages', data)
         return response
@@ -106,12 +106,26 @@ class Shipit:
         items : array ShippingRequest
         """
         data = {
-            "package": []
+            "packages": []
         }
         for item in items:
-            data["package"].append(item.to_shipit_format(self.environment))
+            data['packages'].append(item.to_shipit_format(self.environment))
         response = self.request(self.METHOD_POST, 'packages/mass_create', data)
         return response
+
+    # def all_shippings(self, date):
+    #     """ Return history shippings for date
+    #     Parameters
+    #     ----------
+    #     items : array ShippingRequest
+    #     """
+    #     data = {
+    #         "packages": []
+    #     }
+    #     for item in items:
+    #         data['packages'].append(item.to_shipit_format(self.environment))
+    #     response = self.request(self.METHOD_POST, 'packages/mass_create', data)
+    #     return response
 
     def request(self, method, endpoint, data=None):
         """ Returns the response of an endpoint

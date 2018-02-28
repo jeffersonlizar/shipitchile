@@ -150,26 +150,8 @@ To send a shipping request you must create an ** ShippingRequest ** instance to 
 
 .. code-block:: python
 
-    shippings = []
+    shipping_list = []
     shipping_1 = ShippingRequest({
-        "reference": "S000001",
-        "full_name": "Jefferson Lizarzabal",
-        "email": "cliente@gmail.com",
-        "items_count": 1,
-        "cellphone": "912341234",
-        "is_payable": False,
-        "packing": ShippingRequest.PACKING_NONE,
-        "shipping_type": ShippingRequest.DELIVERY_NORMAL,
-        "destiny": ShippingRequest.DESTINATION_HOME,
-        "courier_for_client": ShippingRequest.COURIER_CHILEXPRESS,
-        "approx_size": ShippingRequest.SIZE_SMALL,
-        "address_commune_id": 317,
-        "address_street": "San Carlos",
-        "address_number": 123,
-        "address_complement": None
-    })
-    shippings.append(shipping_1)
-    shipping_2 = ShippingRequest({
         "reference": "S000002",
         "full_name": "Jefferson Lizarzabal",
         "email": "cliente@gmail.com",
@@ -186,9 +168,26 @@ To send a shipping request you must create an ** ShippingRequest ** instance to 
         "address_number": 123,
         "address_complement": None
     })
-    shippings.append(shipping_2)
-    shipping = shipit.request_massive_shipping(data)
-    print(shipping['id'])
+    shipping_list.append(shipping_1)
+    shipping_2 = ShippingRequest({
+        "reference": "S000003",
+        "full_name": "Jefferson Lizarzabal",
+        "email": "cliente@gmail.com",
+        "items_count": 1,
+        "cellphone": "912341234",
+        "is_payable": False,
+        "packing": ShippingRequest.PACKING_NONE,
+        "shipping_type": ShippingRequest.DELIVERY_NORMAL,
+        "destiny": ShippingRequest.DESTINATION_HOME,
+        "courier_for_client": ShippingRequest.COURIER_CHILEXPRESS,
+        "approx_size": ShippingRequest.SIZE_SMALL,
+        "address_commune_id": 317,
+        "address_street": "San Carlos",
+        "address_number": 123,
+        "address_complement": None
+    })
+    shipping_list.append(shipping_2)
+    shipping = shipit.request_massive_shipping(shipping_list)
 
 
 

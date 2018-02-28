@@ -41,28 +41,28 @@ class ShippingRequest:
         'address_commune_id',
         'address_street',
         'address_number',
-        'address_complement'
+        'address_complement',
     ]
 
     def __init__(self, data):
         self.data = {
-            "reference": None,
-            "full_name": None,
-            "email": None,
-            "items_count": None,
-            "cellphone": None,
-            "is_payable'": None,
-            "packing": None,
-            "shipping_type": None,
-            "destiny": "Domicilio",
-            "courier_for_client": None,
-            "approx_size": None,
-            "address_commune_id": None,
-            "address_street": None,
-            "address_number": None,
-            "address_complement": None,
-            "address_coords_latitude": None,
-            "address_coords_longitude": None,
+            'reference': None,
+            'full_name': None,
+            'email': None,
+            'items_count': None,
+            'cellphone': None,
+            'is_payable': False,
+            'packing': None,
+            'shipping_type': None,
+            'destiny': 'Domicilio',
+            'courier_for_client': None,
+            'approx_size': None,
+            'address_commune_id': None,
+            'address_street': None,
+            'address_number': None,
+            'address_complement': None,
+            'address_coords_latitude': None,
+            'address_coords_longitude': None,
         }
         for key in data:
             if key not in self.valid_properties:
@@ -74,13 +74,13 @@ class ShippingRequest:
             self.data['reference'] = 'TEST-{0}'.format(self.data['reference'])
 
         self.data['address_attributes'] = {
-            "commune_id": self.data['address_commune_id'],
-            "street": self.data['address_street'],
-            "number": self.data['address_number'],
-            "complement": self.data['address_complement'],
-            # "coords": {
-            #     "latitude": self.data['address_coords_latitude'],
-            #     "longitude": self.data['address_coords_longitude'],
+            'commune_id': self.data['address_commune_id'],
+            'street': self.data['address_street'],
+            'number': self.data['address_number'],
+            'complement': self.data['address_complement'],
+            # 'coords': {
+            #     'latitude': self.data['address_coords_latitude'],
+            #     'longitude': self.data['address_coords_longitude'],
             # }
         }
 
