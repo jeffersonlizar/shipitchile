@@ -1,5 +1,6 @@
 Shipit
 ########################################
+https://travis-ci.org/jeffersonlizar/shipit.svg?branch=master
 
 Library that allows integration with the Shipit API (https://developers.shipit.cl/docs) for
 Send dispatch requests, check your statements and other actions.
