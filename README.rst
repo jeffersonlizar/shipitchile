@@ -1,6 +1,7 @@
 Shipit
 ########################################
-[![Build Status](https://travis-ci.org/jeffersonlizar/shipit.svg?branch=master)](https://travis-ci.org/freeCodeCamp/how-to-contribute-to-open-source)
+.. image:: https://travis-ci.org/jeffersonlizar/shipit.svg?branch=master
+    :target: https://travis-ci.org/jeffersonlizar/shipit
 
 
 
