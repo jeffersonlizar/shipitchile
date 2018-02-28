@@ -244,7 +244,7 @@ Thanks
 
 Thanks to kattatzu for create the original version for PHP https://github.com/kattatzu/ShipIt
 
-Licence
+License
 =============
 
 MIT License
