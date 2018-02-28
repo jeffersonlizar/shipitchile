@@ -1,10 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 import unittest
-# from shipit.shipit import Shipit
+from shipit.shipit import Shipit
 import sys
 
-sys.path.append("..")
-from ..shipit.shipit import Shipit
+# sys.path.append("..")
+# from ..shipit.shipit import Shipit
 
 
 class TestShipitMethods(unittest.TestCase):
