@@ -14,9 +14,8 @@ matrix:
     - python: 3.6
       env: TOXENV=py36
 
-install:
-  - pip install -r requirements.txt
-  - pipenv install requests
+install: pip install tox
+
 script: tox
 
 notifications:
