@@ -1,3 +1,4 @@
+#!/usr/bin/python
 class EndpointNotFoundException(Exception):
     """Raise for my specific kind of exception"""
 
@@ -28,6 +29,17 @@ class BadRequestException(Exception):
 
     def __str__(self):
         return 'Bad Request'
+
+
+class DateFormatException(Exception):
+    """Raise for my specific kind of exception"""
+
+    def __init__(self, date):
+        self.date = date
+        super(DateFormatException, self).__init__()
+
+    def __str__(self):
+        return 'Incorrect data, {0} must be a date object'.format(self.date)
 
 
 class AttributeNotValidException(Exception):
@@ -62,7 +74,7 @@ class EmailNotFoundException(Exception):
 class NumberNotValidException(Exception):
     """Raise for my specific kind of exception"""
 
-    def __init__(self, number):
+    def __init__(self, number = None):
         self.number = number
         super(NumberNotValidException, self).__init__()
 
