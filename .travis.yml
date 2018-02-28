@@ -15,9 +15,7 @@ matrix:
       env: TOXENV=py36
 
 install:
-  pip install tox
-  pip install vine==1.1.4
-
+  - pip install -r requirements.txt
 script: tox
 
 notifications:
