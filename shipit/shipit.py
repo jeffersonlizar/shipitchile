@@ -58,6 +58,9 @@ class Shipit:
 
     def quotation(self, request):
         """ Return list of quotations
+        Parameters
+        ----------
+        request : QuotationRequest
         """
         quote = request.to_shipit_format()
         response = self.request(self.METHOD_POST, 'shippings/prices', quote)
@@ -65,6 +68,9 @@ class Shipit:
 
     def best_quotation(self, request):
         """ Return quotation fastest and cheapest
+        Parameters
+        ----------
+        request : QuotationRequest
         """
         quote = request.to_shipit_format()
         response = self.request(self.METHOD_POST, 'shippings/price', quote)
@@ -72,9 +78,22 @@ class Shipit:
 
     def economic_quotation(self, request):
         """ Return quotation cheapest
+        Parameters
+        ----------
+        request : QuotationRequest
         """
         quote = request.to_shipit_format()
         response = self.request(self.METHOD_POST, 'shippings/price', quote)
+        return response
+
+    def request_shipping(self, request):
+        """ Return shipping request
+        Parameters
+        ----------
+        request : ShippingRequest
+        """
+        quote = request.to_shipit_format(self.environment)
+        response = self.request(self.METHOD_POST, 'packages', quote)
         return response
 
     def request(self, method, endpoint, data=None):

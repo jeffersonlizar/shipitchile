@@ -1,3 +1,7 @@
+from .exceptions import AttributeNotValidException
+from .shipit import Shipit
+
+
 class ShippingRequest:
     SIZE_SMALL = 'Pequeño (10x10x10cm)'
     SIZE_MEDIUM = 'Mediano (30x30x30cm)'
@@ -40,4 +44,55 @@ class ShippingRequest:
         'address_complement'
     ]
 
-    data = {}
+    data = {
+        "reference": None,
+        "full_name": None,
+        "email": None,
+        "items_co": None,
+        "cellphone": None,
+        "is_payable'": None,
+        "packing": None,
+        "shipping_type": None,
+        "destiny": "Domicilio",
+        "courier_for_client": None,
+        "approx_size": None,
+        "address_commune_id": None,
+        "address_street": None,
+        "address_number": None,
+        "address_complement": None,
+        "address_coords_latitude": None,
+        "address_coords_longitude": None,
+    }
+
+    def __init__(self, data):
+        for key in data:
+            if key not in self.valid_properties:
+                raise AttributeNotValidException(key)
+            self.data[key] = data[key]
+
+    def to_shipit_format(self, environment=Shipit.ENV_PRODUCTION):
+        if environment == Shipit.ENV_DEVELOPMENT:
+            self.data['reference'] = 'TEST-{0}'.format(self.data['reference'])
+
+        self.data['address_attributes'] = {
+            "commune_id": self.data['address_commune_id'],
+            "street": self.data['address_street'],
+            "number": self.data['address_number'],
+            "complement": self.data['address_complement'],
+            # "coords": {
+            #     "latitude": self.data['address_coords_latitude'],
+            #     "longitude": self.data['address_coords_longitude'],
+            # }
+        }
+
+        del self.data['address_commune_id']
+        del self.data['address_street']
+        del self.data['address_number']
+        del self.data['address_complement']
+        del self.data['address_coords_latitude']
+        del self.data['address_coords_longitude']
+
+        package = {
+            "package": self.data
+        }
+        return package
