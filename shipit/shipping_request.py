@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from .exceptions import AttributeNotValidException
 from .shipit import Shipit
 

@@ -1,3 +1,4 @@
+#!/usr/bin/python
 class EndpointNotFoundException(Exception):
     """Raise for my specific kind of exception"""
 
