@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # from __future__ import absolute_import, unicode_literals
 #
-# from .shipit import Shipit
+from .shipit import Shipit
 
 # def main():
 #     """Entry point for the application script"""
