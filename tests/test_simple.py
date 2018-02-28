@@ -5,3 +5,7 @@
 
 def test_success():
     assert True
+
+
+def test_request_regions():
+    assert True
