@@ -1,6 +1,8 @@
 Shipit
 ########################################
-https://travis-ci.org/jeffersonlizar/shipit.svg?branch=master
+[![Build Status](https://travis-ci.org/jeffersonlizar/shipit.svg?branch=master)](https://travis-ci.org/freeCodeCamp/how-to-contribute-to-open-source)
+
+
 
 Library that allows integration with the Shipit API (https://developers.shipit.cl/docs) for
 Send dispatch requests, check your statements and other actions.
