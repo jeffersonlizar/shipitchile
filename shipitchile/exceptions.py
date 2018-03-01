@@ -1,4 +1,6 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 class EndpointNotFoundException(Exception):
     """Raise for my specific kind of exception"""
 
@@ -74,7 +76,7 @@ class EmailNotFoundException(Exception):
 class NumberNotValidException(Exception):
     """Raise for my specific kind of exception"""
 
-    def __init__(self, number = None):
+    def __init__(self, number=None):
         self.number = number
         super(NumberNotValidException, self).__init__()
 
