@@ -3,9 +3,11 @@ Shipit
 .. image:: https://travis-ci.org/jeffersonlizar/shipit.svg?branch=master
     :target: https://travis-ci.org/jeffersonlizar/shipit
 .. image:: https://codecov.io/gh/jeffersonlizar/shipit/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/jeffersonlizar/shipit
+    :target: https://codecov.io/gh/jeffersonlizar/shipit
+.. image:: https://img.shields.io/badge/License-MIT-yellow.svg
+    :target: https://opensource.org/licenses/MIT
 .. image:: https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg
-  :target: https://saythanks.io/to/jeffersonlizar
+    :target: https://saythanks.io/to/jeffersonlizar
 
 
 Library that allows integration with the Shipit API (https://developers.shipit.cl/docs) for
