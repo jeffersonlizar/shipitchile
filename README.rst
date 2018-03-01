@@ -4,6 +4,8 @@ Shipit
     :target: https://travis-ci.org/jeffersonlizar/shipit
 .. image:: https://codecov.io/gh/jeffersonlizar/shipit/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/jeffersonlizar/shipit
+.. image:: https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg
+  :target: https://saythanks.io/to/jeffersonlizar
 
 
 Library that allows integration with the Shipit API (https://developers.shipit.cl/docs) for
