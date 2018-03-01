@@ -2,7 +2,8 @@ Shipit
 ########################################
 .. image:: https://travis-ci.org/jeffersonlizar/shipit.svg?branch=master
     :target: https://travis-ci.org/jeffersonlizar/shipit
-
+.. image:: https://codecov.io/gh/jeffersonlizar/shipit/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/jeffersonlizar/shipit
 
 
 Library that allows integration with the Shipit API (https://developers.shipit.cl/docs) for
@@ -228,6 +229,7 @@ Obtain tracking URL
 You can generate the tracking url easily:
 
 .. code-block:: python
+
     test = Shipit.tracking_url('chilexpress', 99680722912)
 
 Approximate shipping size
@@ -236,9 +238,9 @@ Approximate shipping size
 You can get the approximate size in the Shipit format of a package.
 
 .. code-block:: python
+
     size = Shipit.package_size(width = 14, height = 23, length = 45)
 
----- Under Construction ----
 
 
 Do not hesitate to send me your feedbacks or pull-request to improve this library.

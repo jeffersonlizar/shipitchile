@@ -1,10 +1,12 @@
 #!/usr/bin/python
 from __future__ import absolute_import, unicode_literals
-import json
-import requests
-import datetime
 
-from .exceptions import EndpointNotFoundException, AttributeNotValidException, ConnectException, EmailNotFoundException, \
+import datetime
+import json
+
+import requests
+
+from .exceptions import EndpointNotFoundException, EmailNotFoundException, \
     NumberNotValidException, TokenNotFoundException, BadRequestException, UserNotAuthException, DateFormatException
 
 
