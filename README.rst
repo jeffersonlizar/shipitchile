@@ -1,4 +1,4 @@
-Shipit
+Shipit Chile
 ########################################
 .. image:: https://travis-ci.org/jeffersonlizar/shipit.svg?branch=master
     :target: https://travis-ci.org/jeffersonlizar/shipit
@@ -25,17 +25,18 @@ https://clientes.shipit.cl/settings/api
 Use
 =============
 
+You must
 
 .. code-block:: python
 
-    shipit = new Shipit('EMAIL', 'TOKEN', 'development')
-    // o
-    shipit = new Shipit()
+    from shipitchile import Shipit
+
+    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
     shipit.email('EMAIL')
     shipit.token('TOKEN')
     shipit.environment(Shipit.ENV_PRODUCTION)
 
-    print(Shipit.communes())
+if you do not pass the environment value by default it starts in production
 
 Available Actions
 =============
@@ -60,7 +61,6 @@ Example
     print(regions[0]['name'])
     // "Arica y Parinacota"
 
-
 Get a Quote
 -----
 
@@ -74,6 +74,9 @@ Example
 
 .. code-block:: python
 
+    from shipitchile import Shipit, QuotationRequest
+
+    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
     data = QuotationRequest({
         "length": 1,
         "width": 1,
@@ -94,6 +97,9 @@ You can send the information of your office and get the cheapest quote.
 
 .. code-block:: python
 
+    from shipitchile import Shipit, QuotationRequest
+
+    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
     data = QuotationRequest({
         "length": 1,
         "width": 1,
@@ -113,6 +119,9 @@ You can get the most convenient quote in both response time (SLA) and price.
 
 .. code-block:: python
 
+    from shipitchile import Shipit, QuotationRequest
+
+    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
     data = QuotationRequest({
         "length": 1,
         "width": 1,
@@ -132,6 +141,9 @@ To send a shipping request you must create an ** ShippingRequest ** instance to 
 
 .. code-block:: python
 
+    from shipitchile import Shipit, ShippingRequest
+
+    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
     data = ShippingRequest({
         "reference": "S000001",
         "full_name": "Jefferson Lizarzabal",
@@ -159,6 +171,9 @@ To send a shipping request you must create an ** ShippingRequest ** instance to 
 
 .. code-block:: python
 
+    from shipitchile import Shipit, ShippingRequest
+
+    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
     shipping_list = []
     shipping_1 = ShippingRequest({
         "reference": "S000002",
@@ -206,6 +221,9 @@ using the ** shipping ** method:
 
 .. code-block:: python
 
+    from shipitchile import Shipit
+
+    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
     shipping = shipit.shipping(280584)
     print(shipping['id'])
     print(shipping['reference'])
@@ -218,6 +236,9 @@ By default it will be the current date
 
 .. code-block:: python
 
+    from shipitchile import Shipit
+
+    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
     date = datetime.date(2018, 1, 26)
     history = shipit.all_shipping(date)
     for shipping in history:
@@ -234,6 +255,8 @@ You can generate the tracking url easily:
 
 .. code-block:: python
 
+    from shipitchile import Shipit
+
     tracking_url = Shipit.tracking_url('chilexpress', 99680722912)
 
 Approximate shipping size
@@ -243,9 +266,9 @@ You can get the approximate size in the Shipit format of a package.
 
 .. code-block:: python
 
+    from shipitchile import Shipit
+
     size = Shipit.package_size(width = 14, height = 23, length = 45)
-
-
 
 Do not hesitate to send me your feedbacks or pull-request to improve this library.
 

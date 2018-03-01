@@ -5,13 +5,13 @@ import unittest
 import datetime
 import os
 
-from shipit import Shipit, QuotationRequest, ShippingRequest
-from shipit.exceptions import DateFormatException, NumberNotValidException, EmailNotFoundException, \
+from shipitchile import Shipit, QuotationRequest, ShippingRequest
+from shipitchile.exceptions import DateFormatException, NumberNotValidException, EmailNotFoundException, \
     TokenNotFoundException, AttributeNotValidException, UserNotAuthException
 
 # for test local dev
-# from ..shipit import Shipit, QuotationRequest, ShippingRequest
-# from ..shipit.exceptions import DateFormatException, NumberNotValidException, EmailNotFoundException, \
+# from ..shipitchile import Shipit, QuotationRequest, ShippingRequest
+# from ..shipitchile.exceptions import DateFormatException, NumberNotValidException, EmailNotFoundException, \
 #     TokenNotFoundException, AttributeNotValidException, UserNotAuthException
 
 
