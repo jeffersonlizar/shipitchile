@@ -208,7 +208,7 @@ using the ** shipping ** method:
 
     shipping = shipit.shipping(280584)
     print(shipping['id'])
-    print(shipping['reference])
+    print(shipping['reference'])
 
 Show shipping requests history
 -----
@@ -219,9 +219,9 @@ By default it will be the current date
 .. code-block:: python
 
     date = datetime.date(2018, 1, 26)
-    shipping = shipit.all_shipping(date)
-    for shipping_data in shipping:
-        print(shipping_data['id'])
+    history = shipit.all_shipping(date)
+    for shipping in history:
+        print(shipping['id'])
 
 
 Utilities
@@ -234,7 +234,7 @@ You can generate the tracking url easily:
 
 .. code-block:: python
 
-    test = Shipit.tracking_url('chilexpress', 99680722912)
+    tracking_url = Shipit.tracking_url('chilexpress', 99680722912)
 
 Approximate shipping size
 -----
