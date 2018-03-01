@@ -84,9 +84,6 @@ of cariers available Shipit.
 
 For this it is necessary that you create an instance ** QuotationRequest ** to be sent to the method ** quotation **.
 
-Example
------
-
 .. code-block:: python
 
     from shipitchile import Shipit, QuotationRequest
