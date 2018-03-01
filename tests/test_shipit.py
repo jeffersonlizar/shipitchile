@@ -4,7 +4,7 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-from shipit import Shipit
+from shipit import Shipit, QuotationRequest, ShippingRequest
 
 # for test local dev
 # from ..shipit import Shipit, QuotationRequest, ShippingRequest
