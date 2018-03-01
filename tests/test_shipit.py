@@ -3,6 +3,7 @@ from __future__ import absolute_import
 
 import unittest
 import datetime
+import os
 
 from shipit import Shipit, QuotationRequest, ShippingRequest
 
@@ -13,7 +14,7 @@ from shipit import Shipit, QuotationRequest, ShippingRequest
 class TestShipitMethods(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.shipit = Shipit('jlizarzabal@firesoft.com.ve', 'miRxLALSLWWv9fUC7KyW', Shipit.ENV_DEVELOPMENT)
+        cls.shipit = Shipit(os.environ['SHIPIT_EMAIL'], os.environ['SHIPIT_TOKEN'], Shipit.ENV_DEVELOPMENT)
 
     def test_not_email_not_token(self):
         shipit = Shipit('email', 'token')
