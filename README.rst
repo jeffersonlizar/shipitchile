@@ -42,8 +42,6 @@ https://clientes.shipit.cl/settings/api
 Use
 =============
 
-You must
-
 .. code-block:: python
 
     from shipitchile import Shipit
@@ -51,7 +49,7 @@ You must
     shipit = Shipit('EMAIL', 'TOKEN', 'ENV')
     shipit.email('EMAIL')
     shipit.token('TOKEN')
-    shipit.environment(Shipit.ENV_PRODUCTION)
+    shipit.environment(Shipit.ENV_DEVELOPMENT)
 
 if you do not pass the environment value by default it starts in production
 
