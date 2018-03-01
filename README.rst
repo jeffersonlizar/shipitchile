@@ -13,6 +13,23 @@ Shipit Chile
 Library that allows integration with the Shipit API (https://developers.shipit.cl/docs) for
 Send dispatch requests, check your statements and other actions.
 
+Installation
+=============
+From source:
+
+.. code-block:: python
+
+    git clone https://github.com/jeffersonlizar/shipitchile
+    cd shipitchile
+    python setup.py install
+
+From PyPi directly:
+
+.. code-block:: python
+
+    pip install shipitchile
+
+
 Access Credentials
 =============
 
