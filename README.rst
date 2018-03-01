@@ -1,5 +1,9 @@
 Shipit
 ########################################
+.. image:: https://travis-ci.org/jeffersonlizar/shipit.svg?branch=master
+    :target: https://travis-ci.org/jeffersonlizar/shipit
+
+
 
 Library that allows integration with the Shipit API (https://developers.shipit.cl/docs) for
 Send dispatch requests, check your statements and other actions.
@@ -244,7 +248,7 @@ Thanks
 
 Thanks to kattatzu for create the original version for PHP https://github.com/kattatzu/ShipIt
 
-Licence
+License
 =============
 
 MIT License
