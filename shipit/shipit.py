@@ -18,11 +18,6 @@ class Shipit:
     METHOD_PUT = 'put'
     base_api = 'http://api.shipit.cl/v/'
 
-    email = None
-    token = None
-
-    environment = ENV_PRODUCTION
-
     SIZE_SMALL = 29
     SIZE_MEDIUM = 49
     SIZE_LARGE = 60
@@ -166,10 +161,10 @@ class Shipit:
         response : JSON
             JSON object.
         """
-        if not self.token:
-            raise TokenNotFoundException
         if not self.email:
             raise EmailNotFoundException
+        if not self.token:
+            raise TokenNotFoundException
         endpoint = '{0}{1}'.format(self.base_api, endpoint)
         headers = {'Content-Type': 'application/json',
                    'X-Shipit-Email': self.email,
@@ -184,9 +179,11 @@ class Shipit:
             res = requests.put(endpoint, json=data, headers=headers)
         if res.status_code == 400:
             raise BadRequestException()
-        if res.status_code == 403:
+        elif res.status_code == 401:
             raise UserNotAuthException(self.email)
-        if res.status_code == 404:
+        elif res.status_code == 403:
+            raise UserNotAuthException(self.email)
+        elif res.status_code == 404:
             raise EndpointNotFoundException(endpoint)
         response = json.loads(res.content.decode('utf-8'))
         return response
