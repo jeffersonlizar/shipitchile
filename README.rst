@@ -2,7 +2,12 @@ Shipit
 ########################################
 .. image:: https://travis-ci.org/jeffersonlizar/shipit.svg?branch=master
     :target: https://travis-ci.org/jeffersonlizar/shipit
-
+.. image:: https://codecov.io/gh/jeffersonlizar/shipit/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/jeffersonlizar/shipit
+.. image:: https://img.shields.io/badge/License-MIT-yellow.svg
+    :target: https://opensource.org/licenses/MIT
+.. image:: https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg
+    :target: https://saythanks.io/to/jeffersonlizar
 
 
 Library that allows integration with the Shipit API (https://developers.shipit.cl/docs) for
@@ -203,7 +208,7 @@ using the ** shipping ** method:
 
     shipping = shipit.shipping(280584)
     print(shipping['id'])
-    print(shipping['reference])
+    print(shipping['reference'])
 
 Show shipping requests history
 -----
@@ -214,9 +219,9 @@ By default it will be the current date
 .. code-block:: python
 
     date = datetime.date(2018, 1, 26)
-    shipping = shipit.all_shipping(date)
-    for shipping_data in shipping:
-        print(shipping_data['id'])
+    history = shipit.all_shipping(date)
+    for shipping in history:
+        print(shipping['id'])
 
 
 Utilities
@@ -228,7 +233,8 @@ Obtain tracking URL
 You can generate the tracking url easily:
 
 .. code-block:: python
-    test = Shipit.tracking_url('chilexpress', 99680722912)
+
+    tracking_url = Shipit.tracking_url('chilexpress', 99680722912)
 
 Approximate shipping size
 -----
@@ -236,9 +242,9 @@ Approximate shipping size
 You can get the approximate size in the Shipit format of a package.
 
 .. code-block:: python
+
     size = Shipit.package_size(width = 14, height = 23, length = 45)
 
----- Under Construction ----
 
 
 Do not hesitate to send me your feedbacks or pull-request to improve this library.

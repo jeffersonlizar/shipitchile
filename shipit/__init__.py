@@ -1,12 +1,5 @@
-#!/usr/bin/python
-# from __future__ import absolute_import, unicode_literals
-#
 from .shipit import Shipit
+from .quotation_request import QuotationRequest
+from .shipping_request import ShippingRequest
 
-# def main():
-#     """Entry point for the application script"""
-#     print("Call your main application code here")
 
-# __all__ = [
-#     'Shipit'
-# ]

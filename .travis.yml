@@ -1,23 +1,18 @@
-# this file is *not* meant to cover or endorse the use of travis, but rather to
-# help confirm pull requests to this project.
-
 language: python
-
 matrix:
   include:
-#    - python: 2.7
-#      env: TOXENV=py27
-    - python: 3.4
-      env: TOXENV=py34
-    - python: 3.5
-      env: TOXENV=py35
-    - python: 3.6
-      env: TOXENV=py36
-
+  - python: 3.4
+    env: TOXENV=py34
+  - python: 3.5
+    env: TOXENV=py35
+  - python: 3.6
+    env: TOXENV=py36
 install:
   - pip install -r requirements.txt
-
 script: tox
-
 notifications:
   email: false
+env:
+  global:
+  - secure: QioXl9EiIIvoM5LIv2HSPnT3HE2reEk1uqesqZ0yVDb2QDYslBG1gCgRNg8zGd8qEn4pYUVuElX7i299abKgWn0MtxAf52mrTp1EqU2L8m9wtOGh+rhxFVw2+7HTZGoFOVaGpqHlhIy1/nGlNSCayOPdVAOYnmTE9+Pa6tNHHOfhNQbRqZ64C0XhZAy8Hm0+LRIS3HvB1c1aAyTlBeawmCRai2udebmHKhZCV0wH48mwKVasUgKhxOkdKoUJutUC0WwpB4vftwW47Z8EhbHqzTMD/IEsQYCeRR8tzCUvu9BP5sk3RBqH69zAEneklJ+RHsd65GvWpfZPjHmnNLwDJj/wmGtMxsCIQ8GS19i4N6rY81aJvzR0/lmW6ZOZ9ZO+sEmmVub91h2R+9Aydtf/1ZHWSHvEgIPnstKmTNw4q4j8RQ9mMQKolPdZDSnXn5/yrNAVwmXT4w5/tDIFb6qOj1pN1+YFxOpOlvKEFlzIBIIFPXkEPurM2BvNKg1dfOi5ceElCouq8KrXlJIyFoeNx7TFAT5Kg0sCFJLsSd/bV8gp7RqYzam8UBy4lk8OHXNJhaGuUQbM7AhYQLVGyaJIiNHBKopIfmJplL3F6IHB1uCVoNvF1PbtQF40DbV/KYwJaAgAMfEiBz8Qson2nB/6zx0V8ba2s8Ugs5CsNY2+Kzk=
+  - secure: CvjMMTNfRtSY2paoBaSX+Wl9CcVbPnii7AjGVO2ZaYaA/VBpiAOZMx1OOydZ0WVm2y9gcezvys/IVCpbdDijesd6TbRXALWf0egzXjF2eJBlIdyW207/yBjb9lFCYgbJ+sLEcWEh+r4PH/QxmrzLHoJ7V0oV0joBHEzWRMpxnJJSnHnxO1pBrGNTMYr4BvtGcAiDsy23/l39Jsgs0E9Pr5l67IDJ6FKAK6vFPvsL0x8vkIqG6eBy4zNbop9b+GqmA44h85L5xspfhoXGeHbfQ/zXxaWsNGPrYgMAGDZA46QqTYQsdaFHQ11/xEVKYBjTgzCivhYY/DffBZF/myHETfmHxPXPYWEXOdpDiU2E8tWntRnwK0g5AEGfNWW5SpGLtgbfcLTvqJLHrloL1EAS0dSZXFk4caqWSoWr2AP2jHZ8urjDXksojhtSaQabpD2g5Vy7FbpI6erTTM92XkaJtZSnCAhuvfcvD3AljdMDmLdXLJaQ1JD+te4MfDJj7xcdSWJ8KSAjeoJ5ZIgHUQAI8TQbWarok48S4RBDhakbuxmEEd3kKCsteg0w4BT00r6iUeIgwKtpqae0LzOr9vTEw1H6Qemmvt0JkWo4Y6VyhB7Lew1k2+gwEjd6XsPbw/xmaDwdf0yj+VDv/2bo47mj/sqD27YvU7GCf4NmzLv4VBo=

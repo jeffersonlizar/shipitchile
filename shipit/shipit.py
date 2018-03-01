@@ -1,10 +1,12 @@
 #!/usr/bin/python
-from __future__ import absolute_import, unicode_literals
-import json
-import requests
-import datetime
+from __future__ import absolute_import
 
-from .exceptions import EndpointNotFoundException, AttributeNotValidException, ConnectException, EmailNotFoundException, \
+import datetime
+import json
+
+import requests
+
+from .exceptions import EndpointNotFoundException, EmailNotFoundException, \
     NumberNotValidException, TokenNotFoundException, BadRequestException, UserNotAuthException, DateFormatException
 
 
@@ -15,11 +17,6 @@ class Shipit:
     METHOD_GET = 'get'
     METHOD_PUT = 'put'
     base_api = 'http://api.shipit.cl/v/'
-
-    email = None
-    token = None
-
-    environment = ENV_PRODUCTION
 
     SIZE_SMALL = 29
     SIZE_MEDIUM = 49
@@ -164,10 +161,10 @@ class Shipit:
         response : JSON
             JSON object.
         """
-        if not self.token:
-            raise TokenNotFoundException
         if not self.email:
             raise EmailNotFoundException
+        if not self.token:
+            raise TokenNotFoundException
         endpoint = '{0}{1}'.format(self.base_api, endpoint)
         headers = {'Content-Type': 'application/json',
                    'X-Shipit-Email': self.email,
@@ -182,9 +179,11 @@ class Shipit:
             res = requests.put(endpoint, json=data, headers=headers)
         if res.status_code == 400:
             raise BadRequestException()
-        if res.status_code == 403:
+        elif res.status_code == 401:
             raise UserNotAuthException(self.email)
-        if res.status_code == 404:
+        elif res.status_code == 403:
+            raise UserNotAuthException(self.email)
+        elif res.status_code == 404:
             raise EndpointNotFoundException(endpoint)
         response = json.loads(res.content.decode('utf-8'))
         return response
