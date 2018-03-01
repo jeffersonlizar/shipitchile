@@ -31,7 +31,7 @@ You must
 
     from shipitchile import Shipit
 
-    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
+    shipit = Shipit('EMAIL', 'TOKEN', 'ENV')
     shipit.email('EMAIL')
     shipit.token('TOKEN')
     shipit.environment(Shipit.ENV_PRODUCTION)
@@ -76,7 +76,7 @@ Example
 
     from shipitchile import Shipit, QuotationRequest
 
-    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
+    shipit = Shipit('EMAIL', 'TOKEN', 'ENV')
     data = QuotationRequest({
         "length": 1,
         "width": 1,
@@ -99,7 +99,7 @@ You can send the information of your office and get the cheapest quote.
 
     from shipitchile import Shipit, QuotationRequest
 
-    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
+    shipit = Shipit('EMAIL', 'TOKEN', 'ENV')
     data = QuotationRequest({
         "length": 1,
         "width": 1,
@@ -121,7 +121,7 @@ You can get the most convenient quote in both response time (SLA) and price.
 
     from shipitchile import Shipit, QuotationRequest
 
-    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
+    shipit = Shipit('EMAIL', 'TOKEN', 'ENV')
     data = QuotationRequest({
         "length": 1,
         "width": 1,
@@ -143,7 +143,7 @@ To send a shipping request you must create an ** ShippingRequest ** instance to 
 
     from shipitchile import Shipit, ShippingRequest
 
-    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
+    shipit = Shipit('EMAIL', 'TOKEN', 'ENV')
     data = ShippingRequest({
         "reference": "S000001",
         "full_name": "Jefferson Lizarzabal",
@@ -173,7 +173,7 @@ To send a shipping request you must create an ** ShippingRequest ** instance to 
 
     from shipitchile import Shipit, ShippingRequest
 
-    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
+    shipit = Shipit('EMAIL', 'TOKEN', 'ENV')
     shipping_list = []
     shipping_1 = ShippingRequest({
         "reference": "S000002",
@@ -223,7 +223,7 @@ using the ** shipping ** method:
 
     from shipitchile import Shipit
 
-    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
+    shipit = Shipit('EMAIL', 'TOKEN', 'ENV')
     shipping = shipit.shipping(280584)
     print(shipping['id'])
     print(shipping['reference'])
@@ -238,7 +238,7 @@ By default it will be the current date
 
     from shipitchile import Shipit
 
-    shipit = new Shipit('EMAIL', 'TOKEN', 'ENV')
+    shipit = Shipit('EMAIL', 'TOKEN', 'ENV')
     date = datetime.date(2018, 1, 26)
     history = shipit.all_shipping(date)
     for shipping in history:
