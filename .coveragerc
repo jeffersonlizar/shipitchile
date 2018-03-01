@@ -1,6 +1,6 @@
 [run]
 branch = True
-source = shipit
+source = shipitchile
 
 [report]
 exclude_lines =
