@@ -8,7 +8,7 @@ matrix:
   - python: 3.6
     env: TOXENV=py36
 install:
-- pip install -r requirements.txt
+  - pip install -r requirements.txt
 script: tox
 notifications:
   email: false
