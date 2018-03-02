@@ -2,6 +2,8 @@ Shipit Chile
 ########################################
 .. image:: https://travis-ci.org/jeffersonlizar/shipitchile.svg?branch=master
     :target: https://travis-ci.org/jeffersonlizar/shipitchile
+.. image:: https://img.shields.io/pypi/v/shipitchile.svg
+    :target: https://pypi.python.org/pypi/shipitchile
 .. image:: https://codecov.io/gh/jeffersonlizar/shipit/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/jeffersonlizar/shipit
 .. image:: https://img.shields.io/badge/License-MIT-yellow.svg
