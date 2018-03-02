@@ -4,8 +4,8 @@ Shipit Chile
     :target: https://travis-ci.org/jeffersonlizar/shipitchile
 .. image:: https://img.shields.io/pypi/v/shipitchile.svg
     :target: https://pypi.python.org/pypi/shipitchile
-.. image:: https://codecov.io/gh/jeffersonlizar/shipit/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/jeffersonlizar/shipit
+.. image:: https://codecov.io/gh/jeffersonlizar/shipitchile/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/jeffersonlizar/shipitchile
 .. image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :target: https://opensource.org/licenses/MIT
 .. image:: https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg
